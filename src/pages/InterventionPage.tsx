@@ -146,15 +146,15 @@ export function InterventionPage() {
                 <Icon name="calendar" className="mt-0.5 size-5 shrink-0 text-brand-600" />
                 <div className="flex-1">
                   <div className="font-semibold first-letter:uppercase">{formatDay(i.appointment.start)}</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">
+                  <div className="text-sm text-zinc-600 dark:text-zinc-400">
                     {formatTime(i.appointment.start)} · {durationLabel(i.appointment.durationMin)}
                   </div>
-                  {addr && <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">{addr.label}</div>}
+                  {addr && <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{addr.label}</div>}
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {phone && client && (
-                  <a href={smsHref(phone, confirmationMessage(i, client, data.settings))} className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-brand-600 px-3 text-sm font-semibold text-white">
+                  <a href={smsHref(phone, confirmationMessage(i, client, data.settings))} className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-brand-600 px-3 text-sm font-semibold text-on-brand">
                     <Icon name="message" className="size-4" /> SMS de confirmation
                   </a>
                 )}
@@ -165,7 +165,7 @@ export function InterventionPage() {
             </>
           ) : (
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm text-slate-500">Pas de rendez-vous fixé.</p>
+              <p className="text-sm text-zinc-500">Pas de rendez-vous fixé.</p>
               <LinkButton to={`/interventions/${i.id}/modifier`} size="sm" variant="primary" icon="calendar">
                 Fixer un RDV
               </LinkButton>
@@ -205,16 +205,16 @@ export function InterventionPage() {
             {reminders.map((r) => {
               const late = !r.done && r.at < Date.now()
               return (
-                <li key={r.id} className="flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+                <li key={r.id} className="flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
                   <input type="checkbox" checked={r.done} onChange={(e) => store.setReminderDone(i.id, r.id, e.target.checked)} className="size-6 shrink-0 accent-green-600" aria-label="Fait" />
-                  <div className={`min-w-0 flex-1 ${r.done ? 'text-slate-400 line-through' : ''}`}>
+                  <div className={`min-w-0 flex-1 ${r.done ? 'text-zinc-400 line-through' : ''}`}>
                     <div className="font-semibold">{r.reason}</div>
-                    <div className={`text-sm ${late ? 'font-semibold text-red-700 dark:text-red-400' : 'text-slate-500'}`}>
+                    <div className={`text-sm ${late ? 'font-semibold text-red-700 dark:text-red-400' : 'text-zinc-500'}`}>
                       {relativeDay(r.at)} à {formatTime(r.at)}
                       {late && ' · en retard'}
                     </div>
                   </div>
-                  <button type="button" onClick={() => void store.deleteReminder(i.id, r.id)} className="grid size-9 place-items-center rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Supprimer le rappel">
+                  <button type="button" onClick={() => void store.deleteReminder(i.id, r.id)} className="grid size-9 place-items-center rounded-full text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Supprimer le rappel">
                     <Icon name="trash" className="size-4" />
                   </button>
                 </li>
@@ -244,16 +244,16 @@ export function InterventionPage() {
         </Card>
         {i.description && (
           <Card className="mt-2">
-            <p className="text-xs font-bold text-slate-500 uppercase">Détails</p>
+            <p className="text-xs font-bold text-zinc-500 uppercase">Détails</p>
             <p className="mt-1 whitespace-pre-line">{i.description}</p>
           </Card>
         )}
-        <ol className="mt-3 space-y-3 border-l-2 border-slate-200 pl-4 dark:border-slate-800">
+        <ol className="mt-3 space-y-3 border-l-2 border-zinc-200 pl-4 dark:border-zinc-800">
           {log.map((l) => (
             <li key={l.id} className="relative">
-              <span className={`absolute top-1.5 -left-[23px] size-3 rounded-full ring-4 ring-slate-50 dark:ring-slate-950 ${l.kind === 'note' ? 'bg-brand-600' : 'bg-slate-400'}`} />
-              <div className="text-xs text-slate-500">{formatDateTime(l.at)}</div>
-              <div className={l.kind === 'note' ? 'whitespace-pre-line' : 'text-sm text-slate-600 italic dark:text-slate-400'}>{l.text}</div>
+              <span className={`absolute top-1.5 -left-[23px] size-3 rounded-full ring-4 ring-zinc-50 dark:ring-zinc-950 ${l.kind === 'note' ? 'bg-brand-600' : 'bg-zinc-400'}`} />
+              <div className="text-xs text-zinc-500">{formatDateTime(l.at)}</div>
+              <div className={l.kind === 'note' ? 'whitespace-pre-line' : 'text-sm text-zinc-600 italic dark:text-zinc-400'}>{l.text}</div>
             </li>
           ))}
         </ol>

@@ -14,7 +14,7 @@ import { InterventionsPage } from './pages/InterventionsPage'
 import { LoginPage } from './pages/LoginPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { TodayPage } from './pages/TodayPage'
-import appIcon from './assets/icon.svg'
+import logoMark from './assets/logo-mark.png'
 
 function AppRoutes({ onLogout }: { onLogout?: () => void }) {
   return (
@@ -86,7 +86,7 @@ function FirebaseApp() {
   if (state.loading) {
     return (
       <div className="grid min-h-dvh place-items-center">
-        <img src={appIcon} alt="" className="size-16 animate-pulse rounded-2xl" />
+        <img src={logoMark} alt="" className="size-16 animate-pulse dark:invert" />
       </div>
     )
   }

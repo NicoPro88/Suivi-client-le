@@ -11,17 +11,17 @@ import { EmptyState, LinkButton, PageTitle, Section } from '../components/ui'
 function ClientRow({ c }: { c: Client }) {
   const phone = c.phones?.[0]?.number
   return (
-    <Link to={`/clients/${c.id}`} className="flex items-center gap-3 px-4 py-3 active:bg-slate-50 dark:active:bg-slate-800">
+    <Link to={`/clients/${c.id}`} className="flex items-center gap-3 px-4 py-3 active:bg-zinc-50 dark:active:bg-zinc-800">
       <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-50 text-sm font-bold text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
         {(c.lastName || c.firstName || c.company || '?').charAt(0).toUpperCase()}
       </span>
       <div className="min-w-0 flex-1">
         <div className="truncate font-semibold">{fullName(c)}</div>
-        <div className="truncate text-sm text-slate-500 dark:text-slate-400">
+        <div className="truncate text-sm text-zinc-500 dark:text-zinc-400">
           {[phone ? formatPhone(phone) : null, c.address?.city || c.address?.label].filter(Boolean).join(' · ') || '—'}
         </div>
       </div>
-      <Icon name="chevron" className="size-5 shrink-0 text-slate-400" />
+      <Icon name="chevron" className="size-5 shrink-0 text-zinc-400" />
     </Link>
   )
 }
@@ -62,7 +62,7 @@ export function ClientsPage() {
           <>
             {results.clients.length > 0 && (
               <Section title="Clients" count={results.clients.length}>
-                <div className="divide-y divide-slate-100 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 dark:divide-slate-800 dark:bg-slate-900 dark:ring-slate-800">
+                <div className="divide-y divide-zinc-100 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200 dark:divide-zinc-800 dark:bg-zinc-900 dark:ring-zinc-800">
                   {results.clients.map((c) => (
                     <ClientRow key={c.id} c={c} />
                   ))}
@@ -106,8 +106,8 @@ export function ClientsPage() {
       )}
       {groups.map(([letter, list]) => (
         <section key={letter} className="mt-4">
-          <h2 className="mb-1 px-2 text-xs font-bold text-slate-500">{letter}</h2>
-          <div className="divide-y divide-slate-100 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 dark:divide-slate-800 dark:bg-slate-900 dark:ring-slate-800">
+          <h2 className="mb-1 px-2 text-xs font-bold text-zinc-500">{letter}</h2>
+          <div className="divide-y divide-zinc-100 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200 dark:divide-zinc-800 dark:bg-zinc-900 dark:ring-zinc-800">
             {list.map((c) => (
               <ClientRow key={c.id} c={c} />
             ))}

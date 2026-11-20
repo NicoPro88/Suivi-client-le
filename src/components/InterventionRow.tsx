@@ -15,19 +15,19 @@ export function InterventionRow({ i, showClient = true, showTimeOnly = false }: 
   return (
     <Link
       to={`/interventions/${i.id}`}
-      className="flex items-center gap-3 rounded-2xl bg-white p-3.5 shadow-sm ring-1 ring-slate-200 active:bg-slate-50 dark:bg-slate-900 dark:ring-slate-800 dark:active:bg-slate-800"
+      className="flex items-center gap-3 rounded-2xl bg-white p-3.5 shadow-sm ring-1 ring-zinc-200 active:bg-zinc-50 dark:bg-zinc-900 dark:ring-zinc-800 dark:active:bg-zinc-800"
     >
       {start != null && (
         <div className="w-14 shrink-0 text-center">
           <div className="text-lg leading-none font-bold text-brand-700 dark:text-brand-300">{formatTime(start).replace(' h ', 'h')}</div>
-          {!showTimeOnly && <div className="mt-1 text-[11px] font-medium text-slate-500 first-letter:uppercase">{relativeDay(start)}</div>}
+          {!showTimeOnly && <div className="mt-1 text-[11px] font-medium text-zinc-500 first-letter:uppercase">{relativeDay(start)}</div>}
         </div>
       )}
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <span className="truncate font-semibold">{showClient && client ? fullName(client) : i.title}</span>
         </div>
-        <div className="truncate text-sm text-slate-600 dark:text-slate-400">
+        <div className="truncate text-sm text-zinc-600 dark:text-zinc-400">
           {showClient ? `${i.type} · ${i.title}` : `${i.type} · réf. ${i.ref}`}
         </div>
         <div className="mt-1.5 flex items-center gap-2">
@@ -39,7 +39,7 @@ export function InterventionRow({ i, showClient = true, showTimeOnly = false }: 
           )}
         </div>
       </div>
-      <Icon name="chevron" className="size-5 shrink-0 text-slate-400" />
+      <Icon name="chevron" className="size-5 shrink-0 text-zinc-400" />
     </Link>
   )
 }

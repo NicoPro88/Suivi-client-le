@@ -35,7 +35,7 @@ function ListEditor({ items, onChange, placeholder }: { items: string[]; onChang
       {items.map((t, idx) => (
         <div key={idx} className="flex gap-2">
           <Input value={t} onChange={(e) => onChange(items.map((x, i) => (i === idx ? e.target.value : x)))} />
-          <button type="button" onClick={() => onChange(items.filter((_, i) => i !== idx))} className="grid size-11 shrink-0 place-items-center rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Retirer">
+          <button type="button" onClick={() => onChange(items.filter((_, i) => i !== idx))} className="grid size-11 shrink-0 place-items-center rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Retirer">
             <Icon name="x" />
           </button>
         </div>
@@ -69,21 +69,21 @@ function StatusEditor({ statuses, used, onChange }: { statuses: Status[]; used: 
   return (
     <div className="space-y-3">
       {statuses.map((s, idx) => (
-        <div key={s.id} className="rounded-xl p-3 ring-1 ring-slate-200 dark:ring-slate-700">
+        <div key={s.id} className="rounded-xl p-3 ring-1 ring-zinc-200 dark:ring-zinc-700">
           <div className="flex items-center gap-2">
             <Input value={s.label} onChange={(e) => set(idx, { label: e.target.value })} />
             <div className="flex shrink-0">
-              <button type="button" onClick={() => move(idx, -1)} className="grid size-9 place-items-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Monter">
+              <button type="button" onClick={() => move(idx, -1)} className="grid size-9 place-items-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Monter">
                 ↑
               </button>
-              <button type="button" onClick={() => move(idx, 1)} className="grid size-9 place-items-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Descendre">
+              <button type="button" onClick={() => move(idx, 1)} className="grid size-9 place-items-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Descendre">
                 ↓
               </button>
             </div>
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
             <StatusBadge status={s} />
-            <select value={s.color} onChange={(e) => set(idx, { color: e.target.value })} className="rounded-lg bg-transparent py-1 ring-1 ring-slate-300 dark:ring-slate-700" aria-label="Couleur">
+            <select value={s.color} onChange={(e) => set(idx, { color: e.target.value })} className="rounded-lg bg-transparent py-1 ring-1 ring-zinc-300 dark:ring-zinc-700" aria-label="Couleur">
               {STATUS_COLORS.map((c) => (
                 <option key={c} value={c}>
                   {c}
@@ -133,7 +133,7 @@ export function SettingsPage({ onLogout }: { onLogout?: () => void }) {
       <Section title="Google Agenda">
         <Card className="space-y-3">
           {!calendar.available ? (
-            <p className="text-sm text-slate-600">Google Agenda n'est pas encore configuré (voir le guide de mise en place).</p>
+            <p className="text-sm text-zinc-600">Google Agenda n'est pas encore configuré (voir le guide de mise en place).</p>
           ) : data.settings.calendarEnabled ? (
             <>
               <p className="flex items-center gap-2 font-semibold text-green-700 dark:text-green-400">
@@ -159,7 +159,7 @@ export function SettingsPage({ onLogout }: { onLogout?: () => void }) {
             </>
           ) : (
             <>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
                 L'appli crée un agenda « {APP_NAME} – Interventions » dans ton compte Google. Elle n'a accès qu'à cet agenda-là, pas au reste.
               </p>
               <Button
@@ -242,11 +242,11 @@ export function SettingsPage({ onLogout }: { onLogout?: () => void }) {
               Installer {APP_NAME} sur cet appareil
             </Button>
           ) : (
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-zinc-600 dark:text-zinc-300">
               Pour l'installer : dans Chrome, menu ⋮ puis « Ajouter à l'écran d'accueil » (téléphone) ou l'icône d'installation dans la barre d'adresse (PC).
             </p>
           )}
-          <p className="text-slate-500">Données hébergées chez Google (Firebase), en Europe. Seul ton compte y a accès.</p>
+          <p className="text-zinc-500">Données hébergées chez Google (Firebase), en Europe. Seul ton compte y a accès.</p>
           {DEMO_MODE ? (
             <Button
               variant="danger"
@@ -260,7 +260,7 @@ export function SettingsPage({ onLogout }: { onLogout?: () => void }) {
             </Button>
           ) : (
             <div className="flex items-center justify-between gap-2">
-              <span className="truncate text-slate-600 dark:text-slate-300">{store.user.email}</span>
+              <span className="truncate text-zinc-600 dark:text-zinc-300">{store.user.email}</span>
               <Button variant="ghost" icon="logout" onClick={onLogout}>
                 Se déconnecter
               </Button>

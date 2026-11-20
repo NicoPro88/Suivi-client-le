@@ -46,14 +46,14 @@ export function AddressInput({ value, onChange, placeholder }: { value: Address;
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         className={verified ? 'pr-10' : ''}
       />
-      {verified && <Icon name="check" className="absolute top-1/2 right-3 size-5 -translate-y-1/2 text-green-600" />}
+      {verified && <Icon name="check" className="absolute top-1/2 right-3 size-5 -tranzinc-y-1/2 text-green-600" />}
       {open && (
-        <ul className="absolute z-30 mt-1 w-full overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700">
+        <ul className="absolute z-30 mt-1 w-full overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-700">
           {suggestions.map((s) => (
             <li key={s.label}>
               <button
                 type="button"
-                className="flex w-full items-center gap-2 px-3.5 py-3 text-left hover:bg-slate-50 dark:hover:bg-slate-800"
+                className="flex w-full items-center gap-2 px-3.5 py-3 text-left hover:bg-zinc-50 dark:hover:bg-zinc-800"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
                   typed.current = false
@@ -62,7 +62,7 @@ export function AddressInput({ value, onChange, placeholder }: { value: Address;
                   setOpen(false)
                 }}
               >
-                <Icon name="pin" className="size-4 shrink-0 text-slate-400" />
+                <Icon name="pin" className="size-4 shrink-0 text-zinc-400" />
                 <span>{s.label}</span>
               </button>
             </li>

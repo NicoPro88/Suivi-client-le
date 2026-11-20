@@ -18,12 +18,12 @@ function ClientPicker({ onPick }: { onPick: (id: string) => void }) {
     <div>
       <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Chercher le client (nom, téléphone…)" autoFocus />
       {hits.length > 0 && (
-        <ul className="mt-2 divide-y divide-slate-100 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:divide-slate-800 dark:ring-slate-700">
+        <ul className="mt-2 divide-y divide-zinc-100 overflow-hidden rounded-xl ring-1 ring-zinc-200 dark:divide-zinc-800 dark:ring-zinc-700">
           {hits.map((c) => (
             <li key={c.id}>
-              <button type="button" onClick={() => onPick(c.id)} className="w-full px-3.5 py-3 text-left hover:bg-slate-50 dark:hover:bg-slate-800">
+              <button type="button" onClick={() => onPick(c.id)} className="w-full px-3.5 py-3 text-left hover:bg-zinc-50 dark:hover:bg-zinc-800">
                 <span className="font-semibold">{fullName(c)}</span>
-                <span className="ml-2 text-sm text-slate-500">{c.address?.city}</span>
+                <span className="ml-2 text-sm text-zinc-500">{c.address?.city}</span>
               </button>
             </li>
           ))}
@@ -91,7 +91,7 @@ export function InterventionFormPage() {
       <Card className="mt-4 space-y-4">
         <Field label="Client">
           {client ? (
-            <div className="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3.5 py-2.5 ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700">
+            <div className="flex items-center justify-between gap-2 rounded-xl bg-zinc-50 px-3.5 py-2.5 ring-1 ring-zinc-200 dark:bg-zinc-800 dark:ring-zinc-700">
               <span className="font-semibold">{fullName(client)}</span>
               {!existing && (
                 <button type="button" className="text-sm font-semibold text-brand-700 dark:text-brand-300" onClick={() => setClientId('')}>
@@ -105,7 +105,7 @@ export function InterventionFormPage() {
         </Field>
 
         <div>
-          <span className="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-300">Type</span>
+          <span className="mb-1.5 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">Type</span>
           <div className="flex flex-wrap gap-2">
             {settings.types.map((t) => (
               <Chip
@@ -172,7 +172,7 @@ export function InterventionFormPage() {
             </Field>
           </div>
         )}
-        {withRdv && store.data.settings.calendarEnabled && <p className="text-xs text-slate-500">Le RDV sera ajouté à ton Google Agenda « Interventions ».</p>}
+        {withRdv && store.data.settings.calendarEnabled && <p className="text-xs text-zinc-500">Le RDV sera ajouté à ton Google Agenda « Interventions ».</p>}
       </Card>
 
       {error && <p className="mt-3 font-semibold text-red-700">{error}</p>}

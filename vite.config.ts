@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: 'autoUpdate',
       disable: mode === 'demo',
-      includeAssets: ['icon.svg'],
+      includeAssets: ['favicon.png'],
       manifest: {
         name: APP_NAME,
         short_name: APP_NAME,
@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => ({
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#c62828',
+        theme_color: '#18181b',
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -39,6 +39,8 @@ export default defineConfig(({ mode }) => ({
   ],
   build: {
     chunkSizeWarningLimit: 700,
+    // La démo tient dans une seule page : les images y sont intégrées.
+    assetsInlineLimit: mode === 'demo' ? 1_000_000 : 4096,
   },
   test: {
     environment: 'node',

@@ -63,16 +63,16 @@ export function ClientPage() {
       <Card className="mt-4 space-y-3">
         {client.phones?.map((p, idx) => (
           <div key={idx} className="flex items-center gap-3">
-            <Icon name="phone" className="size-5 shrink-0 text-slate-400" />
+            <Icon name="phone" className="size-5 shrink-0 text-zinc-400" />
             <a href={telHref(p.number)} className="flex-1 font-semibold">
               {formatPhone(p.number)}
             </a>
-            <span className="text-sm text-slate-500">{p.label}</span>
+            <span className="text-sm text-zinc-500">{p.label}</span>
           </div>
         ))}
         {addr && (
           <div className="flex items-start gap-3">
-            <Icon name="pin" className="mt-0.5 size-5 shrink-0 text-slate-400" />
+            <Icon name="pin" className="mt-0.5 size-5 shrink-0 text-zinc-400" />
             <a href={mapsHref(addr)} target="_blank" rel="noreferrer" className="flex-1">
               {addr.label}
             </a>
@@ -80,7 +80,7 @@ export function ClientPage() {
         )}
         {client.email && (
           <div className="flex items-center gap-3">
-            <Icon name="mail" className="size-5 shrink-0 text-slate-400" />
+            <Icon name="mail" className="size-5 shrink-0 text-zinc-400" />
             <a href={mailHref(client.email)} className="flex-1 break-all">
               {client.email}
             </a>
@@ -88,11 +88,11 @@ export function ClientPage() {
         )}
         {client.notes && (
           <div className="flex items-start gap-3">
-            <Icon name="note" className="mt-0.5 size-5 shrink-0 text-slate-400" />
-            <p className="flex-1 whitespace-pre-line text-slate-700 dark:text-slate-300">{client.notes}</p>
+            <Icon name="note" className="mt-0.5 size-5 shrink-0 text-zinc-400" />
+            <p className="flex-1 whitespace-pre-line text-zinc-700 dark:text-zinc-300">{client.notes}</p>
           </div>
         )}
-        {!client.phones?.length && !addr && !client.email && !client.notes && <p className="text-sm text-slate-500">Aucune coordonnée pour l'instant.</p>}
+        {!client.phones?.length && !addr && !client.email && !client.notes && <p className="text-sm text-zinc-500">Aucune coordonnée pour l'instant.</p>}
       </Card>
 
       <LinkButton to={`/interventions/nouvelle?client=${client.id}`} variant="primary" size="lg" icon="plus" className="mt-4 w-full">
@@ -126,7 +126,7 @@ export function ClientPage() {
             Supprimer le client
           </Button>
         </div>
-        <p className="mt-2 px-1 text-xs text-slate-500">Utile si un client demande ses données ou leur effacement (RGPD).</p>
+        <p className="mt-2 px-1 text-xs text-zinc-500">Utile si un client demande ses données ou leur effacement (RGPD).</p>
       </Section>
     </div>
   )

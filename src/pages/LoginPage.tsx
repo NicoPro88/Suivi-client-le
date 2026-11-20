@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { APP_NAME } from '../config'
 import { Button } from '../components/ui'
-import appIcon from '../assets/icon.svg'
+import logo from '../assets/logo.png'
 
 export function LoginPage({ onLogin }: { onLogin: () => Promise<void> }) {
   const [error, setError] = useState('')
@@ -9,9 +9,9 @@ export function LoginPage({ onLogin }: { onLogin: () => Promise<void> }) {
   return (
     <div className="grid min-h-dvh place-items-center px-6">
       <div className="w-full max-w-sm text-center">
-        <img src={appIcon} alt="" className="mx-auto size-20 rounded-2xl shadow-md" />
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight">{APP_NAME}</h1>
-        <p className="mt-1 text-slate-600 dark:text-slate-400">Tes clients, tes RDV et le suivi de tes chantiers.</p>
+        <img src={logo} alt="Optic Macadré" className="mx-auto w-64 max-w-full dark:invert" />
+        <h1 className="mt-8 text-3xl font-extrabold tracking-tight">{APP_NAME}</h1>
+        <p className="mt-1 text-zinc-600 dark:text-zinc-400">Tes clients, tes RDV et le suivi de tes chantiers.</p>
         <Button
           variant="primary"
           size="lg"
