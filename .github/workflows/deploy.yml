@@ -1,0 +1,38 @@
+name: Mise en ligne
+
+# Publie l'appli sur Firebase Hosting (et les règles de sécurité Firestore)
+# à chaque modification acceptée sur main.
+# Nécessite le secret FIREBASE_SERVICE_ACCOUNT (voir docs/MISE-EN-PLACE.md).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Déployer sur Firebase
+        if: env.FIREBASE_SA != '' && hashFiles('.env.production') != ''
+        run: |
+          echo "$FIREBASE_SA" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          PROJECT_ID=$(grep '^VITE_FIREBASE_PROJECT_ID=' .env.production | cut -d= -f2)
+          npx --yes firebase-tools@15.37.0 deploy --only hosting,firestore:rules --project "$PROJECT_ID" --non-interactive
+      - name: Rappel de configuration
+        if: env.FIREBASE_SA == '' || hashFiles('.env.production') == ''
+        run: echo "::notice::Mise en ligne ignorée : configuration Firebase pas encore terminée (voir docs/MISE-EN-PLACE.md)."

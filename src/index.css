@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Couleurs de la marque : à ajuster sur le logo. */
+@theme {
+  --color-brand-50: #fdecec;
+  --color-brand-100: #fbd5d5;
+  --color-brand-200: #f6aaaa;
+  --color-brand-300: #ef7b7b;
+  --color-brand-400: #e65252;
+  --color-brand-500: #d93434;
+  --color-brand-600: #c62828;
+  --color-brand-700: #a51f1f;
+  --color-brand-800: #861c1c;
+  --color-brand-900: #6e1a1a;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    color-scheme: light dark;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  }
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* évite le zoom automatique sur téléphone */
+  }
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
