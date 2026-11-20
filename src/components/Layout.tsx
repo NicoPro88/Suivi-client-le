@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate, useSearchParams } from 'react-router
 import { APP_NAME, DEMO_MODE } from '../config'
 import { useStore } from '../data/store'
 import { Icon, type IconName } from './Icon'
+import appIcon from '../assets/icon.svg'
 
 const nav: { to: string; label: string; icon: IconName }[] = [
   { to: '/', label: "Aujourd'hui", icon: 'home' },
@@ -112,7 +113,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
         <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-2.5">
           <NavLink to="/" className="flex shrink-0 items-center gap-2" aria-label={APP_NAME}>
-            <img src="./icon.svg" alt="" className="size-9 rounded-lg" />
+            <img src={appIcon} alt="" className="size-9 rounded-lg" />
             <span className="hidden text-lg font-extrabold tracking-tight sm:inline">{APP_NAME}</span>
           </NavLink>
           <SearchBox />

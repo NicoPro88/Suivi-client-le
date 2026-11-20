@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { HashRouter, Route, Routes } from 'react-router'
+import { HashRouter, MemoryRouter, Route, Routes } from 'react-router'
 import { DEMO_MODE } from './config'
 import type { Backend } from './data/backend'
 import { localBackend } from './data/localBackend'
@@ -14,6 +14,7 @@ import { InterventionsPage } from './pages/InterventionsPage'
 import { LoginPage } from './pages/LoginPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { TodayPage } from './pages/TodayPage'
+import appIcon from './assets/icon.svg'
 
 function AppRoutes({ onLogout }: { onLogout?: () => void }) {
   return (
@@ -85,7 +86,7 @@ function FirebaseApp() {
   if (state.loading) {
     return (
       <div className="grid min-h-dvh place-items-center">
-        <img src="./icon.svg" alt="" className="size-16 animate-pulse rounded-2xl" />
+        <img src={appIcon} alt="" className="size-16 animate-pulse rounded-2xl" />
       </div>
     )
   }
@@ -97,6 +98,9 @@ function FirebaseApp() {
   )
 }
 
+// La démo autonome (build "demo") tourne dans une page hôte : elle garde sa navigation en mémoire.
+const Router = import.meta.env.MODE === 'demo' ? MemoryRouter : HashRouter
+
 export default function App() {
-  return <HashRouter>{DEMO_MODE ? <DemoApp /> : <FirebaseApp />}</HashRouter>
+  return <Router>{DEMO_MODE ? <DemoApp /> : <FirebaseApp />}</Router>
 }
